@@ -1,9 +1,11 @@
 import { useRef, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import UserContext from '../context/UserContext'
+import ThemeContext from '../context/ThemeContext' // 🆕 import ThemeContext
 
-const UserSignIn = (props) => {
+const UserSignIn = () => {
   const { actions } = useContext(UserContext)
+  const { accentColor } = useContext(ThemeContext) // 🆕 pull accentColor from context
 
   // State
   const username = useRef(null)
@@ -47,13 +49,13 @@ const UserSignIn = (props) => {
               <button
                 className="button"
                 type="submit"
-                style={{ background: props.accentColor }}
+                style={{ background: accentColor }} // 🆕 use context value
               >
                 Sign In
               </button>
               <button
                 className="button button-secondary"
-                style={{ color: props.accentColor }}
+                style={{ color: accentColor }} // 🆕 use context value
                 onClick={handleCancel}
               >
                 Cancel
